@@ -1,8 +1,5 @@
 from base import BaseView
-from hackers_projects.services.github import GitHubService
-from hackers_projects.services.profile import ProfileService
-from hackers_projects.services.repository import RepositoryService
-from hackers_projects.services.project import ProjectService
+from science_combinator.services.profile import ProfileService
 from django.contrib.auth import logout, login, authenticate
 
 

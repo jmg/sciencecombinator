@@ -6,12 +6,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 from django_conventions import UrlsManager
-import hackers_projects.views as root
+import science_combinator.views as root
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'hackersprojects.views.home', name='home'),
-    # url(r'^hackersprojects/', include('hackersprojects.foo.urls')),
+    # url(r'^$', 'sciencecombinator.views.home', name='home'),
+    # url(r'^sciencecombinator/', include('sciencecombinator.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

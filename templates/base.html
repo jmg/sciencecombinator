@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Hackers Projects | A Github Projects Aggregator</title>
+        <title>Science Combinator | A Scince Videos Aggregator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="description" content="A Github Projects Agreggator | It's like Hackers News but for your Github Projects. Share, discover, vote, comment, contribute open source projects and make the community grow!">
@@ -36,14 +36,13 @@
                 <div class="masthead">
                     <ul class="nav nav-pills pull-right">
                         {% if not profile %}
-                        <li class="active"><a href="/">Home</a></li>
+                        <li {% if request.path == "/" %}class="active"{% endif %}><a href="/">Home</a></li>
                         {% endif %}
-                        <li><a href="/trending/">Trending</a></li>
-                        <li><a href="/new/">New</a></li>      
-                        <li><a href="/about/">About</a></li>
-                        {% if profile %}<li><a href="/user/projects/">My projects</a></li>{% endif %}                        
+                        <li {% if request.path == "/trending/" %}class="active"{% endif %}><a href="/trending/">Trending</a></li>
+                        <li {% if request.path == "/new/" %}class="active"{% endif %}><a href="/new/">New</a></li>      
+                        <li {% if request.path == "/about/" %}class="active"{% endif %}><a href="/about/">About</a></li>                        
                     </ul>
-                    <h3 class="muted"><a href="/">Hackers Projects</a></h3>
+                    <h3 class="muted"><a href="/">Science Combinator</a></h3>
                 </div>
             <hr>
 
@@ -53,7 +52,7 @@
 
         <hr>
         <div class="footer">
-            <p><a href="https://github.com/jmg/hackersprojects">Hackers Projects</a> is open source. Feel free to contribute.</p>
+            <p><a href="https://github.com/jmg/hackersprojects">Science Combinator</a> is open source. Feel free to contribute.</p>
             <p>This project is funded via <a href="/donations/">donations</a>.</p>
         </div>
 

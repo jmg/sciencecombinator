@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from base import BaseView
-from hackers_projects.services.comment import CommentService
+from science_combinator.services.comment import CommentService
 
 
 class NewView(BaseView):

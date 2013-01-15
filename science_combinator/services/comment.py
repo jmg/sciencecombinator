@@ -1,5 +1,5 @@
 from base import BaseService
-from hackers_projects.models import Comment
+from science_combinator.models import Comment
 
 
 class CommentService(BaseService):

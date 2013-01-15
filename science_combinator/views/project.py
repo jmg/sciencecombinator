@@ -1,6 +1,5 @@
 from base import BaseView
-from hackers_projects.services.project import ProjectService, TrendingProjectService
-from hackers_projects.services.github import GitHubService
+from science_combinator.services.entry import EntryService, TrendingEntryService
 
 
 class BaseProjectsView(BaseView):
@@ -15,35 +14,33 @@ class BaseProjectsView(BaseView):
         context["view_name"] = self.view_name
         context["next_page"] = int(page) + 1
 
-        context["GITHUB_AUHT_URL"] = GitHubService().get_auth_url()
-
         return self.render_to_response(context)
 
 
 class TrendingView(BaseProjectsView):
 
-    service = TrendingProjectService()
+    service = TrendingEntryService()
     view_name = "trending"
     url = r"^{0}/$".format(view_name)
 
 
 class NewView(BaseProjectsView):
 
-    service = ProjectService()
+    service = EntryService()
     view_name = "new"
     url = r"^{0}/$".format(view_name)
 
 
 class Comments(BaseView):
 
-    url = r"^projects/(?P<project_id>\d+)/comments/$"
+    url = r"^entries/(?P<entry_id>\d+)/comments/$"
 
     def get(self, *args, **kwargs):
 
         context = {}
 
-        project = ProjectService().get(id=self.kwargs["project_id"])
-        context["project"] = project
-        context["comments"] = project.comment_set.all()
+        entry = EntryService().get(id=self.kwargs["entry_id"])
+        context["entry"] = entry
+        context["comments"] = entry.comment_set.all()
 
         return self.render_to_response(context)

@@ -3,18 +3,15 @@
 {% block content %}
 
 <div class="jumbotron">
-    <h1>The Open Source Combinator</h1>
-    <p class="lead">It's like Hackers News but for your Github Projects.<br> Share, vote, comment, contribute open source projects and make the community grow! </p>
-    <p><a class="btn-github" href="{% if not profile %}{{GITHUB_AUHT_URL}}{% else %}/user/projects{% endif %}">Sign in with <b>GitHub</b></a></p>
+    <h1>The Science Videos Combinator</h1>
+    <p class="lead">Discover, comment, vote, and enjoy the best scientific videos. <br>This site is automatically updated based on what the community like!</p>    
 </div>
 
 <hr>      
 
-<h3><a href="/trending/">Trending now</a></h3>
-
 <div class="row-fluid marketing">    
 
-    {% for column in projects_columns %}
+    {% for column in entries_columns %}
     <div class="span6">
 
         {% for project in column %}        

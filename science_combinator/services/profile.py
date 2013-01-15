@@ -1,5 +1,5 @@
 from base import BaseService
-from hackers_projects.models import Profile
+from science_combinator.models import Profile
 
 
 class ProfileService(BaseService):

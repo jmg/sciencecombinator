@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.db import models
-from hackers_projects.utils.date import get_time_since
+from science_combinator.utils.date import get_time_since
 
 
 class BaseModel(models.Model):
@@ -21,36 +21,26 @@ class Profile(BaseModel):
     url = models.CharField(max_length=300, null=True, blank=True)
     access_token = models.CharField(max_length=300, blank=True, null=True)
 
-    imported_repos = models.BooleanField(default=False)
 
+class Entry(BaseModel):
 
-class Repository(BaseModel):
-
-    name = models.CharField(max_length=300, null=True, blank=True)
+    title = models.CharField(max_length=300, null=True, blank=True)
     url = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
     remote_id = models.CharField(max_length=300)
-    shared = models.BooleanField(default=False)
 
-    user = models.ForeignKey("Profile")
+    user = models.ForeignKey("Profile", null=True)
 
-
-class Project(BaseModel):
-
-    submited = models.DateTimeField(default=datetime.utcnow())
     votes = models.PositiveIntegerField(default=0)
-
-    repository = models.ForeignKey("Repository")
-    user = models.ForeignKey("Profile")
-
     voted_by = models.ManyToManyField("Profile", related_name="votes")
+    submited = models.DateTimeField(default=datetime.utcnow())
 
 
 class Comment(BaseModel):
 
     content = models.TextField()
-    project = models.ForeignKey("Project")
+    entry = models.ForeignKey("Entry")
     submited = models.DateTimeField(null=True)
 
     user = models.ForeignKey("Profile", null=True)

@@ -1,4 +1,4 @@
-# Django settings for hackersprojects project.
+# Django settings for sciencecombinator project.
 import os
 
 DEBUG = True
@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'hackers_projects',                      # Or path to database file if using sqlite3.
+        'NAME': 'science_combinator',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'root',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -108,13 +108,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-    "hackers_projects.context_processors.processor",
+    "science_combinator.context_processors.processor",
 )
 
-ROOT_URLCONF = 'hackersprojects.urls'
+ROOT_URLCONF = 'sciencecombinator.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'hackersprojects.wsgi.application'
+WSGI_APPLICATION = 'sciencecombinator.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -137,11 +137,11 @@ INSTALLED_APPS = (
 
     'django.contrib.admin',
     'south',
-    'hackers_projects',
+    'science_combinator',
 )
 
 
-HOST = "http://www.hackersprojects.com"
+HOST = "http://www.sciencecombinator.com"
 
 GITHUB_CLIENT_ID = "4e3256ccc69616737fc2"
 GITHUB_SECRET_KEY = "784197833e793dec779f62c2183fc3263a2c611a"
