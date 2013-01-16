@@ -25,7 +25,8 @@ class Profile(BaseModel):
 class Entry(BaseModel):
 
     title = models.CharField(max_length=300, null=True, blank=True)
-    url = models.CharField(max_length=300, null=True, blank=True)
+    published = models.CharField(max_length=300, null=True, blank=True)
+    category = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
     remote_id = models.CharField(max_length=300)

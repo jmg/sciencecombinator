@@ -14,9 +14,8 @@
     {% for column in entries_columns %}
     <div class="span6">
 
-        {% for project in column %}        
-        <h4><a href="{{project.repository.url}}">{{project.repository.name}}</a> by <a href="{{project.user.url}}" target="_blank">{{project.user.username}}</a></h4>
-        <p>{{project.repository.description}}</p>
+        {% for entry in column %}        
+        <iframe width="470" height="320" src="http://www.youtube.com/embed/{{entry.remote_id}}" frameborder="0" allowfullscreen></iframe>
         {% endfor %}
     </div>
     {% endfor %}

@@ -2,3 +2,4 @@ django
 django_conventions
 south
 requests
+gdata

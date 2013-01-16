@@ -143,9 +143,7 @@ INSTALLED_APPS = (
 
 HOST = "http://www.sciencecombinator.com"
 
-GITHUB_CLIENT_ID = "4e3256ccc69616737fc2"
-GITHUB_SECRET_KEY = "784197833e793dec779f62c2183fc3263a2c611a"
-GITHUB_REDIRECT_URI = "{0}/user/new".format(HOST)
+YOUTUBE_SECRET_KEY = "AI39si5X4y1zi0HintnUPrHzQpphKvYnD9OcPjmBOqobmcqaIWMc8DA36A06jvY489YDTpociTiKuL4oA5B9lRo2rNO764tk0A"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

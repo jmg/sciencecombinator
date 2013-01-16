@@ -10,7 +10,7 @@ class BaseProjectsView(BaseView):
 
         context = {}
         projects = self.service.get_page(page=page)
-        context["projects"] = projects
+        context["entries"] = projects
         context["view_name"] = self.view_name
         context["next_page"] = int(page) + 1
 
