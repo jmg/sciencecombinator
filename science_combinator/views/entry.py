@@ -2,7 +2,7 @@ from base import BaseView
 from science_combinator.services.entry import EntryService, TrendingEntryService
 
 
-class BaseProjectsView(BaseView):
+class BaseEntryView(BaseView):
 
     def get(self, *args, **kwargs):
 
@@ -17,18 +17,28 @@ class BaseProjectsView(BaseView):
         return self.render_to_response(context)
 
 
-class TrendingView(BaseProjectsView):
+class TrendingView(BaseEntryView):
 
     service = TrendingEntryService()
     view_name = "trending"
     url = r"^{0}/$".format(view_name)
 
 
-class NewView(BaseProjectsView):
+class NewView(BaseEntryView):
 
     service = EntryService()
     view_name = "new"
     url = r"^{0}/$".format(view_name)
+
+
+class EntryView(BaseEntryView):
+
+    url = r"^entries/(?P<entry_id>\d+)"
+
+    def get(self, *args, **kwargs):
+
+        context = {"entry": EntryService().get(id=self.kwargs["entry_id"])}
+        return self.render_to_response(context)
 
 
 class Comments(BaseView):

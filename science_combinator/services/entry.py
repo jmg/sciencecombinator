@@ -6,7 +6,7 @@ from science_combinator.models import Entry
 class EntryService(BaseService):
 
     entity = Entry
-    _page_size = 30
+    _page_size = 10
 
     def _get_page_query(self, offset, limit, **kwargs):
 

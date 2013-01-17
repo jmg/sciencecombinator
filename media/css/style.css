@@ -46,8 +46,8 @@ textarea {
 #content-wrapper {
     min-height: 800px;
     background: #DDDDDD;
-    opacity:0.65;
-    filter:alpha(opacity=65);
+    opacity:0.85;
+    filter:alpha(opacity=85);
     padding: 30px;
     padding-top: 15px;
 }
@@ -129,4 +129,9 @@ textarea {
 
 .footer {
     color: #DDD;
+}
+
+.entry {
+    margin-bottom: 25px;
+    cursor: pointer;
 }

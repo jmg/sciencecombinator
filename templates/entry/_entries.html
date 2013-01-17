@@ -30,7 +30,7 @@ function vote(entryId) {
         <li>
             <!-- <span id="counter-{{entry.id}}">{{entry.votes}}</span> -->
             <div class="entry-content">
-                <iframe width="470" height="320" src="http://www.youtube.com/embed/{{entry.remote_id}}" frameborder="0" allowfullscreen></iframe>
+                <a href="/entries/{{entry.id}}/"><img class="entry" src="{{entry.thumbnail}}"></a>
             </div>
         </li>    
     {% endfor %}

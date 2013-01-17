@@ -28,6 +28,7 @@ class Entry(BaseModel):
     published = models.CharField(max_length=300, null=True, blank=True)
     category = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    thumbnail = models.CharField(max_length=300, null=True, blank=True)
 
     remote_id = models.CharField(max_length=300)
 
