@@ -39,8 +39,12 @@
                         <li {% if request.path == "/" %}class="active"{% endif %}><a href="/">Home</a></li>
                         {% endif %}
                         <li {% if request.path == "/trending/" %}class="active"{% endif %}><a href="/trending/">Trending</a></li>
-                        <li {% if request.path == "/new/" %}class="active"{% endif %}><a href="/new/">New</a></li>      
-                        <li {% if request.path == "/about/" %}class="active"{% endif %}><a href="/about/">About</a></li>                        
+                        <li {% if request.path == "/new/" %}class="active"{% endif %}><a href="/new/">New</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li {% if request.path == "/myscience/" %}class="active"{% endif %}><a href="/myscience/">My science</a></li>
+                        {% else %}
+                        <li {% if request.path == "/login/" %}class="active"{% endif %}><a href="/login/">Login</a></li>
+                        {% endif %}                   
                     </ul>
                     <h3 class="muted"><a href="/">Science Combinator</a></h3>
                 </div>
@@ -52,7 +56,7 @@
 
         <hr>
         <div class="footer">
-            <p><a href="https://github.com/jmg/hackersprojects">Science Combinator</a> is open source. Feel free to contribute.</p>
+            <p><a href="https://github.com/jmg/sciencecombinator">Science Combinator</a> is open source. Feel free to contribute.</p>
             <p>This project is funded via <a href="/donations/">donations</a>.</p>
         </div>
 

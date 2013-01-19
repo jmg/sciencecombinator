@@ -1,6 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.db import models
+from django.contrib.auth.models import User
 from science_combinator.utils.date import get_time_since
 
 
@@ -13,13 +14,9 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class Profile(BaseModel):
+class Profile(User):
 
-    username = models.CharField(max_length=300)
-    email = models.CharField(max_length=300, null=True, blank=True)
-    remote_id = models.CharField(max_length=300)
-    url = models.CharField(max_length=300, null=True, blank=True)
-    access_token = models.CharField(max_length=300, blank=True, null=True)
+    entries = models.ManyToManyField("Entry")
 
 
 class Entry(BaseModel):
@@ -29,6 +26,7 @@ class Entry(BaseModel):
     category = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     thumbnail = models.CharField(max_length=300, null=True, blank=True)
+    duration = models.CharField(max_length=50, null=True, blank=True)
 
     remote_id = models.CharField(max_length=300)
 
@@ -37,6 +35,12 @@ class Entry(BaseModel):
     votes = models.PositiveIntegerField(default=0)
     voted_by = models.ManyToManyField("Profile", related_name="votes")
     submited = models.DateTimeField(default=datetime.utcnow())
+
+    def get_duration(self):
+
+        if self.duration:
+            return str(timedelta(seconds=int(self.duration)))
+        return ""
 
 
 class Comment(BaseModel):

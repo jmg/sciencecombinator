@@ -1,74 +1,27 @@
 from base import BaseView
 from science_combinator.services.profile import ProfileService
+from science_combinator.services.entry import EntryService
 from django.contrib.auth import logout, login, authenticate
 
 
-class NewView(BaseView):
+class MyScienceView(BaseView):
+
+    url = r"^myscience/$"
+    login_exempt = False
 
     def get(self, *args, **kwargs):
 
-        token = GitHubService().get_access_token(code=self.request.GET.get("code"))
-        user = GitHubService().get_user(token)
-
-        profile = ProfileService().save_profile(user, token)
-
-        self.set_user(profile)
-        
-        return self.redirect("/user/projects")
-
-
-class ImportReposView(BaseView):
-
-    def post(self, *args, **kwargs):
-
-        profile = self.get_user()
-
-        repos = GitHubService().get_repos(profile.access_token)
-        repositories = RepositoryService().save_repos(profile, repos)
-
-        profile.imported_repos = True
-        profile.save()
-
-        self.set_user(profile)
-
-        return self.render_to_response({"repositories": repositories})
-
-
-class ProjectsView(BaseView):
-
-    def get(self, *args, **kwargs):
-
-        context = {}
-
-        profile = self.get_user()
-        if profile.imported_repos:
-            context["repositories"] = profile.repository_set.all()
-
-        return self.render_to_response(context)
-        
-
-class ShareView(BaseView):
-
-    def post(self, *args, **kwargs):
-
-        repo = RepositoryService().get(id=self.request.POST.get("repo"))
-
-        project = ProjectService().new_from_repo(repo)        
-
-        repo.shared = True
-        repo.save()
-
-        return self.json_response({"status": "ok"})
+        return self.render_to_response({})
 
 
 class VoteView(BaseView):
 
     def post(self, *args, **kwargs):
 
-        project = ProjectService().get(id=self.request.POST.get("project"))
+        entry = EntryService().get(id=self.request.POST.get("entry"))
 
-        project.votes += 1
-        project.voted_by.add(self.get_user())
-        project.save()
+        entry.votes += 1
+        entry.voted_by.add(self.request.user)
+        entry.save()
 
-        return self.json_response({"status": "ok", "votes": project.votes })
+        return self.json_response({"status": "ok", "votes": entry.votes })

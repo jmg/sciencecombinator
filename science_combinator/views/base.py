@@ -5,8 +5,6 @@ import simplejson as json
 
 class BaseView(TemplateView):
 
-    csrf_exempt = True
-
     def dispatch(self, request, *args, **kwargs):
 
         return TemplateView.dispatch(self, request, *args, **kwargs)

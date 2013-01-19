@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Login</h3>
+
+{% if login_error %}
+<div class="alert alert-error">{{login_error}}</div>
+{% endif %}
+<form action="/login/" method="POST">
+    {% csrf_token %}
+    <fieldset>    
+        <label>UserName</label><input type="text" name="username">
+        <label>Password</label><input type="password" name="password">
+        <br>
+        <button type="submit" class="btn">Login</button>
+    </fieldset>
+</form>
+
+<br><br>
+<h3>Register</h3>
+
+{% if register_error %}
+<div class="alert alert-error">{{register_error}}</div>
+{% endif %}
+<form action="/register/" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <label>UserName</label><input type="text" name="username">
+        <label>Password</label><input type="password" name="password">
+        <label>Confirm Password</label><input type="password" name="password_confirm">
+        <br>
+        <button type="submit" class="btn">Register</button>
+    </fieldset>
+</form>
+
+
+{% endblock %}

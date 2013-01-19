@@ -20,8 +20,6 @@ function vote(entryId) {
 
 {% block content %} 
 
-{% block title%}{% endblock %}
-
 <div class="row-fluid marketing">    
 
     {% if entries %}
@@ -29,13 +27,16 @@ function vote(entryId) {
     {% for entry in entries %}    
         <li>
             <!-- <span id="counter-{{entry.id}}">{{entry.votes}}</span> -->
-            <div class="entry-content">
-                <a href="/entries/{{entry.id}}/"><img class="entry" src="{{entry.thumbnail}}"></a>
-            </div>
+            <a href="/entries/{{entry.id}}/"><h4>{{entry.title}} - {{entry.get_duration}}</h4>            
+            <img class="entry" src="{{entry.thumbnail}}">
+            </a>
         </li>    
     {% endfor %}
     </ul>
-    <a class="more-entries" href="/{{view_name}}/?page={{next_page}}">More</a>
+    <button class="btn btn-info" onclick="location.href='/{{view_name}}/?page={{next_page}}'">More</button>
+    {% else %}
+    <h3>There are no more videos so far...</h3>
+    <button class="btn" onclick="history.back()">Go Back</button>
     {% endif %}
 </div>
 

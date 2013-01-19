@@ -145,6 +145,9 @@ HOST = "http://www.sciencecombinator.com"
 
 YOUTUBE_SECRET_KEY = "AI39si5X4y1zi0HintnUPrHzQpphKvYnD9OcPjmBOqobmcqaIWMc8DA36A06jvY489YDTpociTiKuL4oA5B9lRo2rNO764tk0A"
 
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT = "/trending/"
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

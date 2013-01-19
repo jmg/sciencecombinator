@@ -30,6 +30,7 @@ class YoutubeService(object):
                 "category": entry.media.category[0].text,
                 "published": entry.published.text,
                 "thumbnail": entry.media.thumbnail[0].url,
+                "duration": entry.media.duration.seconds,
             }
 
             self._normalize(video)
