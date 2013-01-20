@@ -136,15 +136,23 @@ textarea {
     cursor: pointer;
 }
 
-.btn-info {
-    cursor: pointer !important;
-}
-
 .entry-col1 {
     float: left;
-    width: 700px;
+    width: 670px;
 }
 
 .entry-col2 {
     
+}
+
+.entry-col2 div, .entry-list-col2 div {
+    margin-bottom: 10px;
+}
+
+.votes {
+    font-size: 16px;
+}
+
+.entry-list-col2 {
+    margin-top: 50px;
 }

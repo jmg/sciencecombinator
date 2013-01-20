@@ -31,10 +31,10 @@ class VoteView(BaseView):
 
     def post(self, *args, **kwargs):
 
-        entry = EntryService().get(id=self.request.POST.get("entry"))
+        entry = EntryService().get(id=self.request.POST.get("id"))
 
         entry.votes += 1
-        entry.voted_by.add(self.request.user)
+        entry.voted_by.add(self.request.user.profile)
         entry.save()
 
         return self.json_response({"status": "ok", "votes": entry.votes })

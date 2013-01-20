@@ -65,6 +65,29 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/media/bootstrap/js/bootstrap.js"></script>
 
+    <script type="text/javascript">
+
+        function addToFavorites(button, id) {
+            $.post("/user/favorite/", {"id": id, "csrfmiddlewaretoken": "{{csrf_token}}"}, function(response) {
+
+                var buttonObj = $(button);
+                buttonObj.html("Favorited");
+                buttonObj.addClass("btn-info");
+                buttonObj.removeClass("btn-primary");
+            });
+        }
+
+        function upVote(button, id) {
+            $.post("/user/vote/", {"id": id, "csrfmiddlewaretoken": "{{csrf_token}}"}, function(response) {
+
+                var response = JSON.parse(response);
+
+                $(button).hide();
+                $("#votes-number-" + id).html(response.votes);
+            });
+        }
+    </script>
+
     {% block js %}
     {% endblock %}
 

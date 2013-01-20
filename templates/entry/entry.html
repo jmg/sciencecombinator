@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 
 {% block js %}
-<script type="text/javascript">
-function addToFavorites(button, id) {
-    $.post("/user/favorite/", {"id": id, "csrfmiddlewaretoken": "{{csrf_token}}"}, function(response) {
-
-        $(button).html("Favorited");
-    });
-}
-</script>
 {% endblock %}
 
 {% block content %} 
@@ -23,10 +15,29 @@ function addToFavorites(button, id) {
         <iframe width="640" height="480" src="http://www.youtube.com/embed/{{entry.remote_id}}" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="entry-col2">
+
+        <div class="votes">
+            Votes: <span id="votes-number-{{entry.id}}">{{entry.votes}}</span>
+        </div>
+
         {% if request.user.is_authenticated %}
-        {% if not entry in request.user.profile.entries.all %}
-        <button class="btn" onclick="addToFavorites(this, {{entry.id}})">Add to favorites</button>
-        {% endif %}
+            
+            {% if request.user.profile not in entry.voted_by.all %}
+            <div>
+                <button class="btn btn-success" onclick="upVote(this, {{entry.id}})">Up Vote</button>
+            </div>
+            {% endif %}
+
+            {% if not entry in request.user.profile.entries.all %}
+            <div>
+                <button class="btn btn-primary" onclick="addToFavorites(this, {{entry.id}})">Add to favorites</button>
+            </div>
+            {% else %}
+            <div>
+                <button class="btn btn-info">Favorited</button>
+            </div>
+            {% endif %}
+
         {% endif %}
     </div>
 </div>
