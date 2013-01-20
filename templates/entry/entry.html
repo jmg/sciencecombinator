@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block js %}
+<script type="text/javascript">
+function addToFavorites(button, id) {
+    $.post("/user/favorite/", {"id": id, "csrfmiddlewaretoken": "{{csrf_token}}"}, function(response) {
+
+        $(button).html("Favorited");
+    });
+}
+</script>
 {% endblock %}
 
 {% block content %} 
@@ -10,7 +18,17 @@
 <div class="row-fluid marketing">    
 
     <h4>{{entry.title}} - {{entry.get_duration}}</h4>
-    <iframe width="640" height="480" src="http://www.youtube.com/embed/{{entry.remote_id}}" frameborder="0" allowfullscreen></iframe>
+
+    <div class="entry-col1">
+        <iframe width="640" height="480" src="http://www.youtube.com/embed/{{entry.remote_id}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="entry-col2">
+        {% if request.user.is_authenticated %}
+        {% if not entry in request.user.profile.entries.all %}
+        <button class="btn" onclick="addToFavorites(this, {{entry.id}})">Add to favorites</button>
+        {% endif %}
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

@@ -139,3 +139,12 @@ textarea {
 .btn-info {
     cursor: pointer !important;
 }
+
+.entry-col1 {
+    float: left;
+    width: 700px;
+}
+
+.entry-col2 {
+    
+}

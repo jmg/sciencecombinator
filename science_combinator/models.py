@@ -50,3 +50,14 @@ class Comment(BaseModel):
     submited = models.DateTimeField(null=True)
 
     user = models.ForeignKey("Profile", null=True)
+
+
+class AcceptedCaterory(BaseModel):
+
+    name = models.CharField(max_length=300)
+
+
+class SearchTerm(BaseModel):
+
+    term = models.CharField(max_length=300)
+    weight = models.DecimalField(decimal_places=2, max_digits=5)

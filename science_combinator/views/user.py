@@ -11,7 +11,20 @@ class MyScienceView(BaseView):
 
     def get(self, *args, **kwargs):
 
-        return self.render_to_response({})
+        context = {}
+        context["entries"] = self.request.user.profile.entries.all()
+
+        return self.render_to_response(context)
+
+
+class FavoriteView(BaseView):
+
+    def post(self, *args, **kwargs):
+
+        entry = EntryService().get(id=self.request.POST.get("id"))
+        self.request.user.profile.entries.add(entry)
+
+        return self.json_response({"status": "ok"})
 
 
 class VoteView(BaseView):
