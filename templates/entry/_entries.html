@@ -41,7 +41,9 @@ function vote(entryId) {
         </li>    
     {% endfor %}
     </ul>
-    <button class="btn btn-info" onclick="location.href='/{{view_name}}/?page={{next_page}}'">More</button>
+    {% block more %}
+    <button class="btn btn-primary" onclick="location.href='/{{view_name}}/?page={{next_page}}'">More</button>
+    {% endblock %}
     {% else %}
     <h3>There are no more videos so far...</h3>
     <button class="btn" onclick="history.back()">Go Back</button>
