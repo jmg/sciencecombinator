@@ -1,4 +1,4 @@
-hackersprojects
-===============
+Science Combinator
+==================
 
-hackersprojects.com website code
+sciencecombinator.org website code

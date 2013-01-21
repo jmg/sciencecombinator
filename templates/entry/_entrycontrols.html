@@ -1,0 +1,19 @@
+<div class="votes">
+    Votes: <span id="votes-number-{{entry.id}}">{{entry.votes}}</span>
+</div>
+
+{% if request.user.profile not in entry.voted_by.all %}
+<div>
+    <button class="btn btn-success" onclick="{% if request.user.is_authenticated %}upVote(this, {{entry.id}}){% else %}location.href='/login/'{% endif %}">Up Vote</button>
+</div>
+{% endif %}
+
+{% if not entry in request.user.profile.entries.all %}
+<div>
+    <button class="btn btn-primary" onclick="{% if request.user.is_authenticated %}addToFavorites(this, {{entry.id}}){% else %}location.href='/login/'{% endif %}">Add to favorites</button>
+</div>
+{% else %}
+<div>
+    <button class="btn btn-info">Favorited</button>
+</div>
+{% endif %}
