@@ -22,6 +22,10 @@ class EntryService(BaseService):
         entry.save()
         return entry
 
+    def visible_comments(self, entry):
+
+        return entry.comment_set.order_by("-id")[0:4]
+
 
 class TrendingEntryService(EntryService):
 
@@ -31,3 +35,12 @@ class TrendingEntryService(EntryService):
         qs = self.extra(select={"score": mysql_query }).order_by("-score", "-submited")[offset:limit]
         return qs
 
+    def get_main_page(self, size=6):
+
+        trendings = self.get_page(size=size)
+
+        columns = [[], []]
+        for i, trending in enumerate(trendings):
+            columns[i%2].append(trending)
+
+        return columns

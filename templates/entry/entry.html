@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
 {% block js %}
+<script type="text/javascript">
+function saveComment() {
+
+    if (!$.trim($("#content-area").val())) {
+        return;
+    }
+
+    var data = $("#comment-form").serialize();
+    $.post("/comment/new/", data, function(response) {
+
+        $("#comments").html(response);
+    });
+}
+</script>
 {% endblock %}
 
 {% block content %} 
@@ -15,9 +29,23 @@
         <iframe width="640" height="480" src="http://www.youtube.com/embed/{{entry.remote_id}}" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="entry-col2">
-
         {% include "entry/_entrycontrols.html" %}
     </div>
 </div>
+
+<div class="comments-title">Comments</div>
+
+<ul id="comments">
+    {% include "entry/_comments.html" %}
+</ul>
+
+<form id="comment-form" onsubmit="saveComment(); return false;">
+    <fieldset>
+        {% csrf_token %}
+        <input type="hidden" name="entry" value="{{entry.id}}">
+        <textarea id="content-area" name="content"></textarea><br>
+        <input class="btn btn-primary" type="submit" value="Comment"/>
+    </fieldset>
+</form>
 
 {% endblock %}

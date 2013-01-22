@@ -52,11 +52,6 @@ textarea {
     padding-top: 15px;
 }
 
-#comments {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 .btn-info {
     cursor: default !important;
 }
@@ -110,7 +105,7 @@ textarea {
 }
 
 .lead {
-    margin-bottom: 30px !important;
+    margin-bottom: 20px !important;
 }
 
 .repo-link {
@@ -155,4 +150,15 @@ textarea {
 
 .entry-list-col2 {
     margin-top: 50px;
+}
+
+.last-update {
+    color: #0000FF;
+    font-size: 16px;
+    padding-top: 0px;
+}
+
+.comments-title {
+    margin-bottom: 8px;
+    font-weight: bold;
 }

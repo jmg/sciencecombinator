@@ -37,20 +37,10 @@ class EntryView(BaseEntryView):
 
     def get(self, *args, **kwargs):
 
-        context = {"entry": EntryService().get(id=self.kwargs["entry_id"])}
-        return self.render_to_response(context)
-
-
-class Comments(BaseView):
-
-    url = r"^entries/(?P<entry_id>\d+)/comments/$"
-
-    def get(self, *args, **kwargs):
-
         context = {}
-
         entry = EntryService().get(id=self.kwargs["entry_id"])
+
         context["entry"] = entry
-        context["comments"] = entry.comment_set.all()
+        context["comments"] = EntryService().visible_comments(entry)
 
         return self.render_to_response(context)

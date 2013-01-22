@@ -1,0 +1,5 @@
+{% for comment in comments %}
+<li>
+    <strong>{{comment.user.username}}</strong>: {{comment.content}} - {{comment.object_age}}
+</li>
+{% endfor %}

@@ -7,11 +7,19 @@ from science_combinator.utils.date import get_time_since
 
 class BaseModel(models.Model):
 
+    TIME_FIELD = "submited"
+
     def object_age(self):
-        return get_time_since(self.submited)
+        return get_time_since(getattr(self, self.TIME_FIELD))
 
     class Meta:
         abstract = True
+
+
+class Config(BaseModel):
+
+    TIME_FIELD = "last_updated"
+    last_updated = models.DateTimeField(default=datetime.utcnow())
 
 
 class Profile(User):
