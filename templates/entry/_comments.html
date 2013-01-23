@@ -1,5 +1,3 @@
 {% for comment in comments %}
-<li>
-    <strong>{{comment.user.username}}</strong>: {{comment.content}} - {{comment.object_age}}
-</li>
+{% include "entry/_comment.html" %}
 {% endfor %}

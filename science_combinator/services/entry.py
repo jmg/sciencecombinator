@@ -8,6 +8,8 @@ class EntryService(BaseService):
     entity = Entry
     _page_size = 10
 
+    MAX_VISIBLE_COMMENTS = 4
+
     def _get_page_query(self, offset, limit, **kwargs):
 
         return self.order_by("-id")[offset:limit]
@@ -24,7 +26,11 @@ class EntryService(BaseService):
 
     def visible_comments(self, entry):
 
-        return entry.comment_set.order_by("-id")[0:4]
+        return entry.comment_set.order_by("-id")[0:self.MAX_VISIBLE_COMMENTS]
+
+    def are_more_comments(self, entry):
+
+        return entry.comment_set.count() > self.MAX_VISIBLE_COMMENTS
 
 
 class TrendingEntryService(EntryService):

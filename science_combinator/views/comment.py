@@ -7,7 +7,7 @@ from science_combinator.services.entry import EntryService
 
 class NewView(BaseView):
 
-    template_name = "entry/_comments.html"
+    template_name = "entry/_comment.html"
 
     def post(self, *args, **kwargs):
 
@@ -15,8 +15,17 @@ class NewView(BaseView):
         content = self.request.POST.get("content")
 
         comment = CommentService().new(content=content, entry=entry, submited=datetime.utcnow(), user=self.request.user.profile)
-        comment.save()
+        comment.save()        
 
-        comments = EntryService().visible_comments(entry)
+        return self.render_to_response({"comment": comment })
+
+
+class AllView(BaseView):
+
+    template_name = "entry/_comments.html"
+
+    def post(self, *args, **kwargs):
+
+        comments = CommentService().filter(entry__id=self.request.POST.get("entry")).order_by("-id")
 
         return self.render_to_response({"comments": comments })

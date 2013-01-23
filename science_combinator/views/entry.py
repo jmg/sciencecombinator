@@ -42,5 +42,6 @@ class EntryView(BaseEntryView):
 
         context["entry"] = entry
         context["comments"] = EntryService().visible_comments(entry)
+        context["are_more_comments"] = EntryService().are_more_comments(entry)
 
         return self.render_to_response(context)

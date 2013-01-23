@@ -11,6 +11,16 @@ function saveComment() {
     var data = $("#comment-form").serialize();
     $.post("/comment/new/", data, function(response) {
 
+        $("#content-area").val("");
+        $("#comments").prepend(response);
+    });
+}
+
+function loadComments() {
+
+    $.post("/comment/all/", {"entry": "{{entry.id}}", "csrfmiddlewaretoken": "{{csrf_token}}"}, function(response) {
+
+        $("#more-comments").hide();
         $("#comments").html(response);
     });
 }
@@ -36,16 +46,28 @@ function saveComment() {
 <div class="comments-title">Comments</div>
 
 <ul id="comments">
-    {% include "entry/_comments.html" %}
+    {% include "entry/_comments.html" %}    
 </ul>
+
+{% if are_more_comments %}
+<div id="more-comments">
+<a href="javascript:;" onclick="loadComments()">See more comments</a>
+</div>
+<br>
+{% endif %}
 
 <form id="comment-form" onsubmit="saveComment(); return false;">
     <fieldset>
         {% csrf_token %}
         <input type="hidden" name="entry" value="{{entry.id}}">
         <textarea id="content-area" name="content"></textarea><br>
+        {% if request.user.is_authenticated %}
         <input class="btn btn-primary" type="submit" value="Comment"/>
+        {% else %}
+        <input class="btn btn-primary" type="button" onclick="location.href='/login/'" value="Login to comment"/>
+        {% endif %}
     </fieldset>
 </form>
+
 
 {% endblock %}
