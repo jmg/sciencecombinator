@@ -3,9 +3,20 @@ import gdata.youtube.service
 
 from urlparse import parse_qs, urlsplit
 from sciencecombinator.settings import YOUTUBE_SECRET_KEY
+from science_combinator.models import AcceptedCategory
 
 
-class YoutubeService(object):    
+class YoutubeService(object):
+
+    def _is_valid_video(self, video, categories):
+
+        cat = video.media.category[0].text
+
+        for category in categories:
+            if cat.lower() in category.lower():
+                return True
+
+        return False
 
     def search_videos(self, needle):
 
@@ -16,13 +27,18 @@ class YoutubeService(object):
         query = gdata.youtube.service.YouTubeVideoQuery()
         query.vq = needle
         feed = service.YouTubeQuery(query)
+
+        categories = [cat.name for cat in AcceptedCategory.objects.all()]
             
         videos = []
-        for entry in feed.entry:
+        for entry in feed.entry:            
+
+            if not self._is_valid_video(entry, categories):
+                continue
 
             url = entry.media.player.url
             qs = parse_qs(urlsplit(url).query)
-
+            
             video = {
                 "remote_id": qs["v"][0],
                 "title": entry.media.title.text,
@@ -45,3 +61,4 @@ class YoutubeService(object):
                 video[key] = value.encode("utf-8")
             except:
                 video[key] = ""
+

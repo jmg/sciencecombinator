@@ -60,7 +60,7 @@ class Comment(BaseModel):
     user = models.ForeignKey("Profile", null=True)
 
 
-class AcceptedCaterory(BaseModel):
+class AcceptedCategory(BaseModel):
 
     name = models.CharField(max_length=300)
 
@@ -68,4 +68,4 @@ class AcceptedCaterory(BaseModel):
 class SearchTerm(BaseModel):
 
     term = models.CharField(max_length=300)
-    weight = models.DecimalField(decimal_places=2, max_digits=5)
+    weight = models.DecimalField(decimal_places=2, max_digits=5, default=0)

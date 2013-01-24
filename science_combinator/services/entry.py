@@ -1,6 +1,6 @@
 from base import BaseService
 from youtube import YoutubeService
-from science_combinator.models import Entry
+from science_combinator.models import Entry, SearchTerm
 
 
 class EntryService(BaseService):
@@ -14,9 +14,13 @@ class EntryService(BaseService):
 
         return self.order_by("-id")[offset:limit]
 
-    def get_entries(self):
+    def get_new_videos(self):
 
-        return YoutubeService().search_videos("Universe")
+        videos = []
+        for search_term in SearchTerm.objects.order_by("-weight")[0:10]:
+            videos.extend(YoutubeService().search_videos(search_term.term))
+
+        return videos
 
     def new_from_video(self, video):
 

@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        videos = self.service.get_entries()
+        videos = self.service.get_new_videos()
         for video in videos:
             self.service.new_from_video(video)
 

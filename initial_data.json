@@ -5,5 +5,134 @@
         "fields": {
 
         }
+    },
+
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 1,
+        "fields": {
+            "name": "Science"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 2,
+        "fields": {
+            "name": "Tech"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 3,
+        "fields": {
+            "name": "Education"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 4,
+        "fields": {
+            "name": "Nonprofit"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 5,
+        "fields": {
+            "name": "Film"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 6,
+        "fields": {
+            "name": "Shows"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 7,
+        "fields": {
+            "name": "News"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 8,
+        "fields": {
+            "name": "People"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 9,
+        "fields": {
+            "name": "Entertainment"
+        }
+    },
+    {
+        "model": "science_combinator.AcceptedCategory",
+        "pk": 10,
+        "fields": {
+            "name": "Howto"
+        }
+    },
+
+
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 1,
+        "fields": {
+            "term": "The Universe"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 2,
+        "fields": {
+            "term": "Physics"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 3,
+        "fields": {
+            "term": "Mathematics"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 4,
+        "fields": {
+            "term": "Cosmos"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 5,
+        "fields": {
+            "term": "Black Holes"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 6,
+        "fields": {
+            "term": "Worm Holes"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 7,
+        "fields": {
+            "term": "Quanthum Physics"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 8,
+        "fields": {
+            "term": "Relativity Theory"
+        }
     }
 ]

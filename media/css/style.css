@@ -129,6 +129,7 @@ textarea {
 .entry {
     margin-bottom: 25px;
     cursor: pointer;
+    width: 640px;
 }
 
 .entry-col1 {
