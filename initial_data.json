@@ -134,5 +134,54 @@
         "fields": {
             "term": "Relativity Theory"
         }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 9,
+        "fields": {
+            "term": "Particles Physics"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 10,
+        "fields": {
+            "term": "Quanthum Computing"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 11,
+        "fields": {
+            "term": "Michio Kaku"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 12,
+        "fields": {
+            "term": "Brian Cox"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 13,
+        "fields": {
+            "term": "Lawrence Krauss"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 14,
+        "fields": {
+            "term": "Carl Sagan"
+        }
+    },
+    {
+        "model": "science_combinator.SearchTerm",
+        "pk": 15,
+        "fields": {
+            "term": "Stephen Hawking"
+        }
     }
 ]

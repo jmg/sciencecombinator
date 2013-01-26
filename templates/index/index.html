@@ -16,7 +16,7 @@
     <div class="span6">
 
         {% for entry in column %}
-        <a href="/entries/{{entry.id}}/"><h4>{{entry.title}} - {{entry.get_duration}}</h4>
+        <a href="/entries/{{entry.id}}/"><h4 class="entry-title">{{entry.title}} - {{entry.get_duration}}</h4>
         <img class="entry" src="{{entry.thumbnail}}"></a>
         {% endfor %}
     </div>

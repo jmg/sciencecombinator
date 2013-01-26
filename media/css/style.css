@@ -137,10 +137,6 @@ textarea {
     width: 670px;
 }
 
-.entry-col2 {
-    
-}
-
 .entry-col2 div, .entry-list-col2 div {
     margin-bottom: 10px;
 }
@@ -162,4 +158,8 @@ textarea {
 .comments-title {
     margin-bottom: 8px;
     font-weight: bold;
+}
+
+.entry-title {
+    height: 36px;
 }

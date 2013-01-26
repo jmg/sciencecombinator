@@ -61,4 +61,3 @@ class YoutubeService(object):
                 video[key] = value.encode("utf-8")
             except:
                 video[key] = ""
-

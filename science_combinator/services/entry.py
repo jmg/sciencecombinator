@@ -1,6 +1,7 @@
 from base import BaseService
 from youtube import YoutubeService
 from science_combinator.models import Entry, SearchTerm
+from random import shuffle
 
 
 class EntryService(BaseService):
@@ -17,15 +18,24 @@ class EntryService(BaseService):
     def get_new_videos(self):
 
         videos = []
-        for search_term in SearchTerm.objects.order_by("-weight")[0:10]:
+
+        terms = list(SearchTerm.objects.order_by("-weight")[0:50])
+        shuffle(terms)
+
+        for search_term in terms[0:5]:
             videos.extend(YoutubeService().search_videos(search_term.term))
 
         return videos
 
     def new_from_video(self, video):
 
-        entry = self.new(**video)
-        entry.save()
+        entry, created = self.get_or_create(remote_id=video["remote_id"])
+
+        if created:
+            for key, value in video.iteritems():
+                setattr(entry, key, value)
+            entry.save()
+
         return entry
 
     def visible_comments(self, entry):
