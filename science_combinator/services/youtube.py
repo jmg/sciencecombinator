@@ -31,7 +31,7 @@ class YoutubeService(object):
         categories = [cat.name for cat in AcceptedCategory.objects.all()]
             
         videos = []
-        for entry in feed.entry:            
+        for entry in feed.entry:
 
             if not self._is_valid_video(entry, categories):
                 continue

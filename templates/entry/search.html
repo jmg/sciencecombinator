@@ -1,0 +1,9 @@
+{% extends "entry/_entries.html" %}
+
+{% block no_entries %}
+<h3>There are {% if next_page > 1 %}more {% endif %}no videos for your query yet...</h3>
+{% endblock %}
+
+{% block more %}
+<a class="btn btn-primary" href="/{{view_name}}/?query={{query}}&page={{next_page}}">More</a>
+{% endblock %}

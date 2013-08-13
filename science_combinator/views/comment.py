@@ -15,7 +15,7 @@ class NewView(BaseView):
         content = self.request.POST.get("content")
 
         comment = CommentService().new(content=content, entry=entry, submited=datetime.utcnow(), user=self.request.user.profile)
-        comment.save()        
+        comment.save()
 
         return self.render_to_response({"comment": comment })
 

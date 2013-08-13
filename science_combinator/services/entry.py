@@ -64,3 +64,10 @@ class TrendingEntryService(EntryService):
             columns[i%2].append(trending)
 
         return columns
+
+
+class SearchEntryService(EntryService):
+
+    def _get_page_query(self, offset, limit, **kwargs):
+
+        return self.filter(title__icontains=kwargs["query"]).order_by("-id")[offset:limit]

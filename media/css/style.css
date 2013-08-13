@@ -75,11 +75,6 @@ textarea {
     padding-bottom: 40px;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-
 .project-content {
     display: inline;
     position: relative;
@@ -162,4 +157,9 @@ textarea {
 
 .entry-title {
     height: 36px;
+}
+
+.search-box {
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
